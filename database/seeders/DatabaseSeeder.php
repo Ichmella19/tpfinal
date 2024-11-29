@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash; // Ajout de l'importation de la façade Hash
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
