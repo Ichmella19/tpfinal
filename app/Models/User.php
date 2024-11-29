@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin',
     ];
 
     /**
@@ -32,7 +34,7 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
+   
     /**
      * Get the attributes that should be cast.
      *
@@ -53,5 +55,8 @@ class User extends Authenticatable
     protected function assignedTo(){
         return $this->hasMany(Task::class, 'assigned_to');
     }
-
+   
+protected $casts = [
+    'is_admin' => 'boolean',
+];
 }

@@ -33,8 +33,8 @@
         </buton>
     </div>
     <div class="px-10 mt-6 flex justify-between">
-        <h1 class="text-4xl font-bold">Admin Dashbord</h1>
-          <form method="POST" action="{{ route('logout') }}">
+        <h1 class="text-4xl font-bold">User Dashboard</h1>
+           <form method="POST" action="{{ route('logout') }}">
     @csrf
     <button type="submit" class="btn btn-red p-2 bg-red-500 text-white font-semibold text-lg rounded-full justify-center items-center hover:bg-red-800">Se déconnecter</button>
 </form>
@@ -139,7 +139,7 @@
             </div>
 
                 <div class="relative flex flex-col items-start p-7 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100" draggable="true">
-                    <button class="absolute top-0 right-0 flex items-center justify-center  w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
+                    <button class="absolute top-0 right-0 flex items-center justify-center w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
                         <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
                         </svg>
@@ -243,7 +243,7 @@
                     </div>
                 </div>
                 <div class="relative flex flex-col items-start p-7 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100" draggable="true">
-                    <button class="absolute top-0 right-0 flex items-center justify-center w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
+                    <button class="absolute top-0 right-0 flex items-center justify-center  w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
                         <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
                         </svg>
@@ -347,7 +347,7 @@
                 </div>
                
             </div>
-           
+          
         
         </div>
        
