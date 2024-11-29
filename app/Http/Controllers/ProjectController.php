@@ -54,7 +54,7 @@ class ProjectController extends Controller
         // $user = $request->user()->id;
         $dataValidate=$request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'nullable|text',
+            'description' => 'nullable|string',
             'deadline' => 'nullable|date',
             'status' => 'required|in:en cours,terminé'
         ]);

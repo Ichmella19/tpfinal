@@ -28,7 +28,7 @@ class TaskController extends Controller
         // $user = $request->user()->id;
         $request->validate([
             'title' => 'required|string|max:255',
-            'description' => 'nullable|text',
+            'description' => 'nullable|string',
             'status' => 'required|in:non commencé,en cours,terminé',
             'priority' => 'required|in:faible,moyenne,forte',
             'project_id' => 'required|numeric',
