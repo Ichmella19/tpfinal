@@ -20,8 +20,12 @@
         <h1 class="text-4xl font-bold">Admin Dashbord</h1>
 
     </div>
+    <div class="mt-[20px] mr-[70%]">
+        <h1 class="text-4xl font-bold">Projects lists</h1>
+    </div>
+
     <div class="flex flex-grow px-10 mt-20 space-x-6 overflow-auto">
-        <h1 class="text-4xl font-bold">Admin Dashbord</h1>
+
         <div class="flex flex-col flex-shrink-0 w-72">
 
             <div class="flex flex-col pb-2 overflow-auto">
