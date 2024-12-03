@@ -11,34 +11,13 @@ class ProjectController extends Controller
     public function index()
     {
 
-    //     if (auth()->user()->is_admin) {
-    //         // Récupérer tous les projets
-
-
-    // $projects = Project::all();
-    //     }
-    //     }
-
-
-    // else {
-    //         // Récupérer uniquement les projets de l'utilisateur connecté
-
-
-    // $projects = auth()->user()->projects;
-    //     }
-
-
-    //     }
-
-
-    // // Retourner la vue avec les projets
-
-    //     retu
-    // return view('projects.index', compact('projects'));
-    // }
-
-    // }
-        $projects = Project::all();
+        if(Auth::user()->is_admin){
+            $projects = Project::with('user')->get();
+        }
+        else{
+            $projects = Project::where('id', Auth::user()->id)->get();
+        }
+        //$projects = Project::all();
         return view('projects.index', compact('projects'));
 
     }

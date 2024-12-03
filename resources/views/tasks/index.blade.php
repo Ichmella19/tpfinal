@@ -48,7 +48,7 @@
                         <td>{{ $task->status }}</td>
                         <td>{{ $task->priority }}</td>
                         <td>{{ $task->project->title }}</td>
-                        {{-- <td>{{ $task->user->name }}</td> --}}
+                        {{-- <td>{{ $task->assignedTo ? $task->assignedTo->name : 'Non assignée' }}</td> --}}
                         <td>
                             <a href="{{ url('/tasks/' . $task->id . '/edit') }}" class="btn btn-primary">Modifier</a>
 

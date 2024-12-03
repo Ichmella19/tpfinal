@@ -17,9 +17,6 @@
                             <br>
                             <label for="description" style="font-weight:bolder; font-size:25px; margin-top:5%;">Description :</label>
                             <textarea name="description" id="" cols="30" rows="10" style="height: 5%; width: 43%;"></textarea>
-                            @error('description')
-                                <div style="color: red">{{$message}}</div>
-                            @enderror
                             <br>
 
                             <label for="status" style="font-weight:bolder; font-size:25px; margin-top:5%;">Status :</label>
@@ -28,9 +25,6 @@
                                 <option value="en cours">En cours</option>
                                 <option value="terminé">Terminé</option>
                             </select>
-                            @error('status')
-                                <div style="color: red">{{$message}}</div>
-                            @enderror
                             <br>
                             <label for="priority" style="font-weight:bolder; font-size:25px; margin-top:3%; margin-bottom:3%">Priorité :</label>
                             <select name="priority" id="priority" style="margin-right: 35%">
@@ -49,7 +43,7 @@
                             </select>
                             <br>
                             <label for="assigned_to" style="font-weight:bolder; font-size:25px; margin-top:3%; margin-bottom:3%">Assignation :</label>
-                            <select name="assigned_to" id="assigned_to" style="margin-right: 20%; width:50%">
+                            <select name="assigned_to" id="assigned_to" style="margin-right: 20%; width:50%" multiple>
                                 <option value="">Non assigné</option>
                                 @foreach($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>

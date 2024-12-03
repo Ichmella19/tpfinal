@@ -22,10 +22,25 @@
                 </div>
             </div>
 
+            <x-nav-link :href="route('notification')">
+                {{ __('Notifications') }}
+            </x-nav-link>
             <!-- Settings Dropdown -->
+            <x-nav-link :href="route('profile.edit')">
+                <button class=" px-3 py-2 text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 ">
+                    <div class="ms-1">
+                        <img src="{{ asset('images/la-personne.png') }}" alt="Photo de profil" class="w-10 h-10 rounded-full shadow">
+                    </div>
+                </button>
+            </x-nav-link>
+{{--
             <div class="hidden sm:flex sm:items-center sm:ms-6">
-                <x-dropdown align="right" width="48">
-                    <x-slot name="trigger">
+                <x-slot name="trigger">
+
+                </x-slot>
+
+                {{-- <x-slot name="content">
+                    <x-dropdown-link :href="route('profile.edit')">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             <div>{{ Auth::user()->name }}</div>
 
@@ -35,26 +50,21 @@
                                 </svg>
                             </div>
                         </button>
-                    </x-slot>
+                        {{ __('Profile') }}
+                    </x-dropdown-link>
 
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')"
+                            onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                            {{ __('Log Out') }}
                         </x-dropdown-link>
+                    </form>
+                </x-slot> --}}
 
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div>
 
             <!-- Hamburger -->
             <div class="-me-2 flex items-center sm:hidden">

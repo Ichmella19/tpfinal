@@ -18,14 +18,16 @@
         @php
         $i = 1
         @endphp
-        <table class="table table-striped table-hover">
-            <thead class="table-dark" style="background-color:rgba(24, 23, 23, 0.733)">
+
+        <table id="example" class="table table-striped" style="width:100%">
+            <thead>
+                {{-- class="table-dark" style="background-color:rgba(24, 23, 23, 0.733)" --}}
                 <tr>
                     <th>ID</th>
                     <th>Titre</th>
                     {{-- <th>Tâches</th> --}}
-                    {{-- <th>Utilisateurs</th> --}}
                     <th>Description</th>
+                    <th>Utilisateurs</th>
                     <th>Date limite</th>
                     <th>Status</th>
                     <th>Actions</th>
@@ -36,13 +38,13 @@
                     <tr>
                         <td>{{ $i++ }}</td>
                         <td>{{ $project->title }}</td>
-                        {{-- <td>{{$project->user->name}}</td> --}}
                         {{-- <td>
                             @foreach($project->tasks as $task)
                                 <li style="list-style: none">{{$task->title}}</li>
                             @endforeach
                         </td> --}}
                         <td>{{ $project->description }}</td>
+                        <td>{{$project->user->name}}</td>
                         <td>{{ $project->deadline }}</td>
                         <td>{{ $project->status }}</td>
                         <td>
@@ -60,6 +62,12 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        $(document).ready(function(){
+            $('#example').DataTable();
+        });
+    </script>
 
 @endsection
 
