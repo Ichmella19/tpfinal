@@ -1,242 +1,108 @@
 @extends('layouts.nav')
 
 @section('content')
-<div class="flex flex-col  h-screen w-[100%] text-gray-700 bg-gradient-to-tr from-blue-200 via-indigo-200 to-pink-200 justify-center items-center">
-    <!-- <div class="flex items-center flex-shrink-0 w-full h-16 px-10 bg-white bg-opacity-75">
-            <svg class="w-8 h-8 text-indigo-600 stroke-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-            </svg>
-            <input class="flex items-center h-10 px-4 ml-10 text-sm bg-gray-200 rounded-full focus:outline-none focus:ring" type="search" placeholder="Search for anything…">
-            <div class="ml-10">
-                <a class="mx-2 text-lg font-semibold text-indigo-700" href="#">Dashboard</a>
-                <a class="mx-2 text-lg font-semibold text-gray-600 hover:text-indigo-700" href="#">Projects</a>
-                <a class="mx-2 text-lg font-semibold text-gray-600 hover:text-indigo-700" href="#">Tasks</a>
+
+<div class="flex flex-col  min-h-screen bg-gradient-to-tr from-purple-100 via-purple-200 to-purple-300 justify-center items-center rounded-[20px]  ">
+
+    <div class="">
+        <h1 class="text-2xl font-bold mt-10">Admin Dashboard</h1>
+
+    </div>
+    <div class="mt-[20px] mr-[56%]">
+        <h1 class="text-3xl font-bold">Projects lists</h1>
+    </div>
+
+    @php
+    $i = 1;
+    @endphp
+
+
+    <div class="flex justify-center items-center flex-wrap gap-6 mt-8 group">
+        @foreach($projects as $project)
+        <div class="relative original-div flex flex-col items-start p-10 bg-white hover:transition-all scale-95 duration-400 rounded-lg shadow-md  bg-opacity-90 group hover:bg-opacity-100 group">
+
+
+            <span class="flex items-center h-7 ml-5 p-3 text-sm font-bold text-purple-600  bg-purple-300 rounded-full ">Project :{{ $project->title }}</span>
+
+            <div class="ml-5 ">
+
+                <h4 class="mt-2 text-[16px] font-semibold">User-name: {{ $project->user->name }}</h4>
+
             </div>
-            <buton class="flex items-center justify-center w-8 h-8 ml-auto overflow-hidden rounded-full cursor-pointer">
-                <img src="https://assets.codepen.io/5041378/internal/avatars/users/default.png?fit=crop&format=auto&height=512&version=1600304177&width=512" alt="">
-            </buton>
-        </div> -->
-    <div class="px-10 mt-[35px] flex justify-between">
-        <h1 class="text-4xl font-bold">Admin Dashbord</h1>
-
-    </div>
-    <div class="mt-[20px] mr-[70%]">
-        <h1 class="text-4xl font-bold">Projects lists</h1>
-    </div>
-
-    <div class="flex flex-grow px-10 mt-20 space-x-6 overflow-auto">
-
-        <div class="flex flex-col flex-shrink-0 w-72">
-
-            <div class="flex flex-col pb-2 overflow-auto">
-
-                <button class="absolute top-0 right-0 flex items-center justify-center  w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
-                    <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
+            <div class="flex items-center mt-1  font-medium text-black ml-5">
+                <div class="flex items-center">
+                    <svg class="w-4 h-4 text-purple-600 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
                     </svg>
-                </button>
-
-
-
-
-                <div class="relative flex flex-col items-start p-7 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100" draggable="true">
-                    <button class="absolute top-0 right-0 flex items-center justify-center  w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
-                        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                        </svg>
-                    </button>
-                    <span class="flex items-center h-6 px-3 text-xs font-semibold text-green-500 bg-green-100 rounded-full">Task 1</span>
-                    <h4 class="mt-3 text-sm font-medium">This is the title of the card for the thing that needs to be done.</h4>
-                    <div class="flex items-center w-full mt-3 text-xs font-medium text-gray-400">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">Dec 12</span>
-                        </div>
-                        <div class="relative flex items-center ml-4">
-                            <svg class="relative w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">4</span>
-                        </div>
-                        <div class="flex items-center ml-4">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">1</span>
-                        </div>
-                        <img class="w-6 h-6 ml-auto rounded-full" src='https://randomuser.me/api/portraits/men/46.jpg' />
-                    </div>
+                    <span class="ml-1 leading-none text-[16px] font-bold">{{ $project->deadline }}</span>
                 </div>
-                <div class="relative flex flex-col items-start p-7 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100" draggable="true">
-                    <button class="absolute top-0 right-0 flex items-center justify-center  w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
-                        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                        </svg>
-                    </button>
-                    <span class="flex items-center h-6 px-3 text-xs font-semibold text-green-500 bg-green-100 rounded-full">Task 2</span>
-                    <h4 class="mt-3 text-sm font-medium">This is the title of the card for the thing that needs to be done.</h4>
-                    <div class="flex items-center w-full mt-3 text-xs font-medium text-gray-400">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">Dec 12</span>
-                        </div>
-                        <div class="relative flex items-center ml-4">
-                            <svg class="relative w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">4</span>
-                        </div>
-                        <div class="flex items-center ml-4">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">1</span>
-                        </div>
-                        <img class="w-6 h-6 ml-auto rounded-full" src='https://uifaces.co/our-content/donated/vIqzOHXj.jpg' />
-                    </div>
+                <div class="flex items-center ml-5">
+
+                    <p class="font-bold text-[16px] px-2">Statut: </p>
+                    @if( $project->status === "en cours" )
+                    <span class="badge text-bg-warning"> {{ $project->status }}</span>
+                    @else
+                    <span class="badge text-bg-success">{{ $project->status }}</span>
+                    @endif
                 </div>
-
-
+                <img class="w-6 h-6 ml-20 text-blue-600 rounded-full" src='images/la-personne.png' />
             </div>
+            <a href="{{ route('projects.description',$project->id) }}" class="bg-purple-700 p-2 flex hover:bg-purple-900 mt-3 ml-5 font-semibold rounded-lg text-white">
+                <img src="images/droite.png" alt="" class="w-5 h-5 font-bold mt-0.5">
+                Voir plus</a>
         </div>
-        <div class="flex flex-col flex-shrink-0 w-72">
-
-            <div class="flex flex-col pb-2 overflow-auto mb-[20%]">
-
-
-                <div class="relative flex flex-col items-start p-7 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100" draggable="true">
-                    <button class="absolute top-0 right-0 flex items-center justify-center  w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
-                        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                        </svg>
-                    </button>
-                    <span class="flex items-center h-6 px-3 text-xs font-semibold text-pink-500 bg-pink-100 rounded-full">Task 1</span>
-                    <h4 class="mt-3 text-sm font-medium">This is the title of the card for the thing that needs to be done.</h4>
-                    <div class="flex items-center w-full mt-3 text-xs font-medium text-gray-400">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">Dec 12</span>
-                        </div>
-                        <div class="relative flex items-center ml-4">
-                            <svg class="relative w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">4</span>
-                        </div>
-                        <div class="flex items-center ml-4">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">1</span>
-                        </div>
-                        <img class="w-6 h-6 ml-auto rounded-full" src='https://randomuser.me/api/portraits/women/26.jpg' />
-                    </div>
-                </div>
-                <div class="relative flex flex-col items-start p-7 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100" draggable="true">
-                    <button class="absolute top-0 right-0 flex items-center justify-center  w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
-                        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                        </svg>
-                    </button>
-                    <span class="flex items-center h-6 px-3 text-xs font-semibold text-pink-500 bg-pink-100 rounded-full">Task 2</span>
-                    <h4 class="mt-3 text-sm font-medium">This is the title of the card for the thing that needs to be done.</h4>
-                    <div class="flex items-center w-full mt-3 text-xs font-medium text-gray-400">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">Dec 12</span>
-                        </div>
-                        <div class="relative flex items-center ml-4">
-                            <svg class="relative w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">4</span>
-                        </div>
-                        <div class="flex items-center ml-4">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">1</span>
-                        </div>
-                        <img class="w-6 h-6 ml-auto rounded-full" src='https://randomuser.me/api/portraits/men/64.jpg' />
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="flex flex-col flex-shrink-0 w-72">
-
-            <div class="flex flex-col pb-2 overflow-auto">
-                <div class="relative flex flex-col items-start p-7 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100" draggable="true">
-                    <button class="absolute top-0 right-0 flex items-center justify-center  w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
-                        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                        </svg>
-                    </button>
-                    <span class="flex items-center h-6 px-3 text-xs font-semibold text-pink-500 bg-pink-100 rounded-full">Task 1</span>
-                    <h4 class="mt-3 text-sm font-medium">This is the title of the card for the thing that needs to be done.</h4>
-                    <div class="flex items-center w-full mt-3 text-xs font-medium text-gray-400">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">Dec 12</span>
-                        </div>
-                        <div class="relative flex items-center ml-4">
-                            <svg class="relative w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">4</span>
-                        </div>
-                        <div class="flex items-center ml-4">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">1</span>
-                        </div>
-                        <img class="w-6 h-6 ml-auto rounded-full" src='https://randomuser.me/api/portraits/women/26.jpg' />
-                    </div>
-                </div>
-                <div class="relative flex flex-col items-start p-7 mt-3 bg-white rounded-lg cursor-pointer bg-opacity-90 group hover:bg-opacity-100" draggable="true">
-                    <button class="absolute top-0 right-0 flex items-center justify-center w-5 h-5 mt-3 mr-2 text-gray-500 rounded hover:bg-gray-200 hover:text-gray-700 group-hover:flex">
-                        <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
-                        </svg>
-                    </button>
-                    <span class="flex items-center h-6 px-3 text-xs font-semibold text-pink-500 bg-pink-100 rounded-full">Task 2</span>
-                    <h4 class="mt-3 text-sm font-medium">This is the title of the card for the thing that needs to be done.</h4>
-                    <div class="flex items-center w-full mt-3 text-xs font-medium text-gray-400">
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">Dec 12</span>
-                        </div>
-                        <div class="relative flex items-center ml-4">
-                            <svg class="relative w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">4</span>
-                        </div>
-                        <div class="flex items-center ml-4">
-                            <svg class="w-4 h-4 text-gray-300 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd" />
-                            </svg>
-                            <span class="ml-1 leading-none">1</span>
-                        </div>
-                        <img class="w-6 h-6 ml-auto rounded-full" src='https://randomuser.me/api/portraits/men/64.jpg' />
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        @endforeach
     </div>
-</div>
-@endsection
+    <div class="mt-[80px] mr-[56%]">
+        <h1 class="text-3xl font-bold">Tasks lists</h1>
+    </div>
+    @php
+    $i = 1;
+    @endphp
+    <div class="flex justify-center items-center flex-wrap gap-6 mt-8 ">
+        @foreach($taches as $tache)
+        <div class="relative flex flex-col items-start p-7 bg-white hover:transition-all scale-95 duration-400 rounded-lg shadow-md  bg-opacity-90 group hover:bg-opacity-100 ">
+
+
+            <span class="flex items-center h-7 ml-5 p-3 text-sm font-bold text-purple-600  bg-purple-300 rounded-full ">Task :{{ $tache->title }}</span>
+
+            <div class="ml-5">
+
+
+
+                <h4 class="mt-2 text-[16px] font-bold">Nom du Projet: {{ $tache->project->title }}</h4>
+
+            </div>
+            <div class="flex  items-center mt-2 text-[13px] font-medium text-black ml-3">
+                <div class="flex items-center">
+                    <p class="text-[16px] font-bold px-2">Priorité:</p>
+                    @if( $tache->priority === "faible")
+                    <span class="badge text-bg-warning"> {{ $tache->priority }}</span>
+                    @elseif($tache->priority === "moyenne")
+                    <span class="badge text-bg-success">{{ $tache->priority }}</span>
+                    @else
+                    <span class="badge text-bg-info">{{ $tache->priority }}</span>
+                    @endif
+                </div>
+                <div class="flex items-center ml-4 ">
+
+                    <p class="text-[16px] font-bold px-2">Statut:</p>
+                    @if( $tache->status === "non commencé")
+                    <span class="badge text-bg-danger"> {{ $tache->status }}</span>
+                    @elseif( $tache->status === "en cours")
+                    <span class="badge text-bg-warning">{{ $tache->status }}</span>
+                    @else
+                    <span class="badge text-bg-success">{{ $tache->status }}</span>
+                    @endif
+                </div>
+                <img class="w-6 h-6 ml-20 text-blue-600 rounded-full" src='images/la-personne.png' />
+            </div>
+            <a href="{{ route('tasks.description',$tache->id) }}" class="bg-purple-700 flex  p-2 hover:bg-purple-900 text-white mt-3 ml-5 font-semibold rounded-lg">
+                <img src="images/droite.png" alt="" class="w-5 h-5 font-bold mt-0.5">
+                Voir plus</a>
+        </div>
+        @endforeach
+    </div>
+
+   
+@endsection 

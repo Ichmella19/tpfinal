@@ -34,6 +34,8 @@ Route::put('/projects/{id}', [ProjectController::class, 'update']);
 
 Route::delete('/projects/{id}', [ProjectController::class, 'destroy']);
 
+Route::get('/projects/description/{id}', [ProjectController::class, 'description'])->name("projects.description");
+
 
 Route::get('/tasks', [TaskController::class, 'index'])->name("tasks.index");
 
@@ -46,4 +48,7 @@ Route::get('/tasks/{id}/edit', [TaskController::class, 'edit']);
 Route::put('/tasks/{id}', [TaskController::class, 'update']);
 
 Route::delete('/tasks/{id}', [TaskController::class, 'destroy']);
+
+Route::get('/tasks/description/{id}', [TaskController::class, 'description'])->name("tasks.description");
+Route::get('/projects/description/{id}', [ProjectController::class, 'description'])->name("projects.description");
 
