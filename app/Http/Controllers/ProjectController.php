@@ -80,5 +80,12 @@ class ProjectController extends Controller
         return redirect()->route('projects.index')->with('success', 'Le projet a été créé supprimé avec succès.');
     }
 
+    public function description(Request $request,$id)
+    {
+       /*  $projects = Project::all(); */
+        $project=Project::findOrFail($id);
+        return view('projects.description', compact('project'));
+    }
+
 
 }

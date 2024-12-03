@@ -51,7 +51,7 @@ class User extends Authenticatable
     protected function project(){
         return $this->hasMany(Project::class);
     }
-
+   
     protected function assignedTo(){
         return $this->hasMany(Task::class, 'assigned_to');
     }

@@ -2,67 +2,85 @@
 
 @section('content')
 
-        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-            <div class="card text-bg-light mb-3;" style="width: 70%; height:80%">
-                <div class="card-header" style="text-align: center; font-weight:bolder; font-size:40px; background-color:rgba(24, 23, 23, 0.733); color:white">Modifier une tâche</div>
-                <div class="card-body">
-                    <form action="{{ url('/tasks/' . $task->id) }}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div style="text-align: center">
-                            <label for="title" style="font-weight:bolder; font-size:25px; margin-top:5%">Titre de la tâche :</label>
-                            <input type="text" name="title" id="title" value="{{ $task->title }}" style="width: 40%;">
-                            @error('title')
-                                <div style="color: red">{{$message}}</div>
-                            @enderror
-                            <br>
-                            <label for="description" style="font-weight:bolder; font-size:25px; margin-top:5%;">Description :</label>
-                            <textarea name="description" id="" cols="30" rows="10" style="height: 5%; width: 43%;">{{ $task->description }}</textarea>
-
-                            <br>
-
-                            <label for="status" style="font-weight:bolder; font-size:25px; margin-top:5%;">Status :</label>
-                            <select name="status" id="status" value="{{ $task->status }}" style="margin-right: 35%">
-                                <option value="non commencé">Non commencé</option>
-                                <option value="en cours">En cours</option>
-                                <option value="terminé">Terminé</option>
-                            </select>
-                            @error('status')
-                                <div style="color: red">{{$message}}</div>
-                            @enderror
-                            <br>
-                            <label for="priority" style="font-weight:bolder; font-size:25px; margin-top:3%">Priorité :</label>
-                            <select name="priority" id="priority" value="{{ $task->priority }}" style="margin-right: 35%">
-                                <option value="faible">Faible</option>
-                                <option value="moyenne">Moyenne</option>
-                                <option value="forte">Forte</option>
-                            </select>
-                            @error('priority')
-                                <div style="color: red">{{$message}}</div>
-                            @enderror
-                            <br>
-                            <select name="project_id" id="project_id" style="margin-right: 20%; width:50%">
-                                @foreach ($projects as $project)
-                                    <option value="{{$project->id}}">{{$project->title}}</option>
-                                @endforeach
-                            </select>
-                            {{-- <br>
-                            <label for="assigned_to" style="font-weight:bolder; font-size:25px; margin-top:3%; margin-bottom:3%">Assignation :</label>
-                            <select name="assigned_to" id="assigned_to" style="margin-right: 20%; width:50%">
-                                <option value="">Non assigné</option>
-                                @foreach($users as $user)
-                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                @endforeach
-                            </select> --}}
-                        </div>
-
-                        <br>
-                        <div class="d-grid gap-2 col-6 mx-auto">
-                            <button type="submit" class="btn btn-success" style="margin-top: 5%; margin-bottom:5%">Mettre à jour</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<div class="d-flex justify-content-center align-items-center rounded-[20px] mt-[2%] bg-gradient-to-tr from-purple-100 via-purple-200 to-purple-300 " style="height: 100vh; padding-bottom: 20px;">
+    <div class="card shadow-lg rounded-4" style="width: 60%; max-height: 100%; background-color: #ffffff;">
+        <div class="card-header text-center fw-bold bg-gray-100" style="font-size: 1.5rem;  color: black; border-radius: 0.5rem 0.5rem 0 0;">
+            Modifier une tâche
         </div>
+        <div class="card-body" style="overflow-y: auto;">
+            <form action="{{ url('/tasks/' . $task->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+
+                <!-- Groupe de champs 1 : Titre et Description -->
+                <div class="row mb-4">
+                    <!-- Titre -->
+                    <div class="col-md-6">
+                        <label for="title" class="form-label fw-bold text-muted" style="font-size: 1rem;">Titre :</label>
+                        <input type="text" name="title" id="title" class="form-control" value="{{ $task->title }}" style="border-radius: 0.5rem;">
+                        @error('title')
+                        <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <!-- Description -->
+                    <div class="col-md-6">
+                        <label for="description" class="form-label fw-bold text-muted" style="font-size: 1rem;">Description :</label>
+                        <textarea name="description" id="description" class="form-control" style="height: 38px; border-radius: 0.5rem; width: 100%;">{{ $task->description }}</textarea>
+                    </div>
+                </div>
+
+                <!-- Groupe de champs 2 : Statut et Priorité -->
+                <div class="row mb-4">
+                    <!-- Statut -->
+                    <div class="col-md-6">
+                        <label for="status" class="form-label fw-bold text-muted" style="font-size: 1rem;">Statut :</label>
+                        <select name="status" id="status" class="form-select" style="border-radius: 0.5rem;">
+                            <option value="non commencé" {{ $task->status === "non commencé" ? 'selected' : '' }}>Non commencé</option>
+                            <option value="en cours" {{ $task->status === "en cours" ? 'selected' : '' }}>En cours</option>
+                            <option value="terminé" {{ $task->status === "terminé" ? 'selected' : '' }}>Terminé</option>
+                        </select>
+                        @error('status')
+                        <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <!-- Priorité -->
+                    <div class="col-md-6">
+                        <label for="priority" class="form-label fw-bold text-muted" style="font-size: 1rem;">Priorité :</label>
+                        <select name="priority" id="priority" class="form-select" style="border-radius: 0.5rem;">
+                            <option value="faible" {{ $task->priority === "faible" ? 'selected' : '' }}>Faible</option>
+                            <option value="moyenne" {{ $task->priority === "moyenne" ? 'selected' : '' }}>Moyenne</option>
+                            <option value="forte" {{ $task->priority === "forte" ? 'selected' : '' }}>Forte</option>
+                        </select>
+                        @error('priority')
+                        <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Champ isolé : Projet -->
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <label for="project_id" class="form-label fw-bold text-muted" style="font-size: 1rem;">Projet :</label>
+                        <select name="project_id" id="project_id" class="form-select" style="border-radius: 0.5rem;">
+                            @foreach ($projects as $project)
+                            <option value="{{ $project->id }}" {{ $task->project_id === $project->id ? 'selected' : '' }}>
+                                {{ $project->title }}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Bouton -->
+                <div class="text-center">
+                    <button type="submit"
+                        class="bg-purple-600 text-white font-semibold rounded-lg px-6 py-2 hover:bg-purple-700 focus:outline-none focus:ring focus:ring-purple-300">
+                        Mettre à jour
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 @endsection

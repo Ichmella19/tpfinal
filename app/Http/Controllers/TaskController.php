@@ -90,7 +90,7 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->update($request->all());
 
-        return redirect()->route('tasks.index')->with('success', 'La tâche a été modifié avec succès.');
+        return redirect()->route('tasks.index')->with('success', 'La tâche a été modifiée avec succès.');
 
     }
 
@@ -100,4 +100,12 @@ class TaskController extends Controller
         $task->delete();
         return redirect()->route('tasks.index');
     }
+    public function description(Request $request, $id)
+    {
+        /*  $projects = Project::all(); */
+        $task = Task::findOrFail($id);
+        return view('tasks.description', compact('task'));
+    }
+
+
 }

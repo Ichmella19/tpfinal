@@ -20,10 +20,10 @@
     </head>
 
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="h-full">
             @include('layouts.navigation')
 
-            <div class="container">
+            <div class="container ">
                 @yield('content')
             </div>
         </div>
